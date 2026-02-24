@@ -1,116 +1,174 @@
-# eleventy-base-blog v9
+# eleventy-literary-chaptered-base
 
-A starter repository showing how to build a blog with the [Eleventy](https://www.11ty.dev/) site generator (using the [v3.0 release](https://github.com/11ty/eleventy/releases/tag/v3.0.0)).
-
-## Getting Started
-
-* [Want a more generic/detailed getting started guide?](https://www.11ty.dev/docs/getting-started/)
-
-1. Make a directory and navigate to it:
-
-```
-mkdir my-blog-name
-cd my-blog-name
-```
-
-2. Clone this Repository
-
-```
-git clone https://github.com/11ty/eleventy-base-blog.git .
-```
-
-_Optional:_ Review `eleventy.config.js` and `_data/metadata.js` to configure the site’s options and data.
-
-3. Install dependencies
-
-```
-npm install
-```
-
-4. Run Eleventy
-
-Generate a production-ready build to the `_site` folder:
-
-```
-npx @11ty/eleventy
-```
-
-Or build and host on a local development server:
-
-```
-npx @11ty/eleventy --serve
-```
-
-Or you can run [debug mode](https://www.11ty.dev/docs/debugging/) to see all the internals.
+A base for literary chaptered sites built with [Eleventy v3](https://www.11ty.dev/) (ESM). Designed for serialized fiction, novellas, and other long-form prose — in the style of twohorses.lol and esther.lol.
 
 ## Features
 
-- Using [Eleventy v3](https://github.com/11ty/eleventy/releases/tag/v3.0.0) with zero-JavaScript output.
-	- Content is exclusively pre-rendered (this is a static site).
-	- Can easily [deploy to a subfolder without changing any content](https://www.11ty.dev/docs/plugins/html-base/)
-	- All URLs are decoupled from the content’s location on the file system.
-	- Configure templates via the [Eleventy Data Cascade](https://www.11ty.dev/docs/data-cascade/)
-- **Performance focused**: four-hundos Lighthouse score out of the box!
-	- _0 Cumulative Layout Shift_
-	- _0ms Total Blocking Time_
-- Local development live reload provided by [Eleventy Dev Server](https://www.11ty.dev/docs/dev-server/).
-- Content-driven [navigation menu](https://www.11ty.dev/docs/plugins/navigation/)
-- Fully automated [Image optimization](https://www.11ty.dev/docs/plugins/image/)
-	- Zero-JavaScript output.
-	- Support for modern image formats automatically (e.g. AVIF and WebP)
-	- Processes images on-request during `--serve` for speedy local builds.
-	- Prefers `<img>` markup if possible (single image format) but switches automatically to `<picture>` for multiple image formats.
-	- Automated `<picture>` syntax markup with `srcset` and optional `sizes`
-	- Includes `width`/`height` attributes to avoid [content layout shift](https://web.dev/cls/).
-	- Includes `loading="lazy"` for native lazy loading without JavaScript.
-	- Includes [`decoding="async"`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding)
-	- Images can be co-located with blog post files.
-- Per page CSS bundles [via `eleventy-plugin-bundle`](https://github.com/11ty/eleventy-plugin-bundle).
-- Built-in [syntax highlighter](https://www.11ty.dev/docs/plugins/syntaxhighlight/) (zero-JavaScript output).
-- Draft content: use `draft: true` to mark any template as a draft. Drafts are **only** included during `--serve`/`--watch` and are excluded from full builds. This is driven by the `addPreprocessor` configuration API in `eleventy.config.js`. Schema validator will show an error if non-boolean value is set in data cascade.
-- Blog Posts
-	- Automated next/previous links
-	- Accessible deep links to headings
-- Generated Pages
-	- Home, Archive, and About pages.
-	- [Atom feed included (with easy one-line swap to use RSS or JSON)](https://www.11ty.dev/docs/plugins/rss/)
-	- `sitemap.xml`
-	- Zero-maintenance tag pages ([View on the Demo](https://eleventy-base-blog.netlify.app/tags/))
-	- Content not found (404) page
+- Per-chapter markdown files with automatic prev/next navigation
+- Table of contents on the home page
+- Literary CSS: cream background, fluid type, drop caps, scene/character headings, em-dash decorations
+- Adobe Fonts (Typekit) support with graceful fallback stacks
+- Drafts support (`draft: true` in front matter — excluded from production builds)
+- Automatic image optimization via `@11ty/eleventy-img`
+- Dev server binds to all interfaces (LAN, Tailscale) on port 8082
 
-## Demos
+---
 
-- [Netlify](https://eleventy-base-blog.netlify.app/)
-- [Vercel](https://demo-base-blog.11ty.dev/)
-- [Cloudflare Pages](https://eleventy-base-blog-d2a.pages.dev/)
-- [GitHub Pages](https://11ty.github.io/eleventy-base-blog/)
+## Quick start
 
-## Deploy this to your own site
+```
+git clone <this-repo> my-project
+cd my-project
+npm install
+npm run start
+```
 
-Deploy this Eleventy site in just a few clicks on these services:
+Then open `http://localhost:8082`.
 
-- Read more about [Deploying an Eleventy project](https://www.11ty.dev/docs/deployment/) to the web.
-- [Deploy this to **Netlify**](https://app.netlify.com/start/deploy?repository=https://github.com/11ty/eleventy-base-blog)
-- [Deploy this to **Vercel**](https://vercel.com/import/project?template=11ty%2Feleventy-base-blog)
-- Look in `.github/workflows/gh-pages.yml.sample` for information on [Deploying to **GitHub Pages**](https://www.11ty.dev/docs/deployment/#deploy-an-eleventy-project-to-git-hub-pages).
-- [Try it out on **Stackblitz**](https://stackblitz.com/github/11ty/eleventy-base-blog)
+---
 
-### Implementation Notes
+## Customization
 
-- `content/about/index.md` is an example of a content page.
-- `content/blog/` has the blog posts but really they can live in any directory. They need only the `posts` tag to be included in the blog posts [collection](https://www.11ty.dev/docs/collections/).
-- Use the `eleventyNavigation` key (via the [Eleventy Navigation plugin](https://www.11ty.dev/docs/plugins/navigation/)) in your front matter to add a template to the top level site navigation. This is in use on `content/index.njk` and `content/about/index.md`.
-- Content can be in _any template format_ (blog posts needn’t exclusively be markdown, for example). Configure your project’s supported templates in `eleventy.config.js` -> `templateFormats`.
-- The `public` folder in your input directory will be copied to the output folder (via `addPassthroughCopy` in the `eleventy.config.js` file). This means `./public/css/*` will live at `./_site/css/*` after your build completes.
-- This project uses three [Eleventy Layouts](https://www.11ty.dev/docs/layouts/):
-	- `_includes/layouts/base.njk`: the top level HTML structure
-	- `_includes/layouts/home.njk`: the home page template (wrapped into `base.njk`)
-	- `_includes/layouts/post.njk`: the blog post template (wrapped into `base.njk`)
-- `_includes/postslist.njk` is a Nunjucks include and is a reusable component used to display a list of all the posts. `content/index.njk` has an example of how to use it.
+### 1. Site metadata
 
-#### Content Security Policy
+Edit `_data/metadata.js`:
 
-If your site enforces a [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) (as public-facing sites should), you have a few choices (pick one):
+```js
+export default {
+  title: "Your Work's Title",
+  siteName: "yoursite.lol",
+  url: "https://yoursite.lol/",
+  language: "en",
+  description: "A description of this work.",
+  author: {
+    name: "Your Name",
+    url: "https://yoursite.lol/about/",
+  },
+  typekit: {
+    serif: "",   // Adobe Fonts kit ID, e.g. "ztn6rcs"
+    sans: "",    // Adobe Fonts kit ID, e.g. "pgn7ley"
+  }
+}
+```
 
-1. In `base.njk`, remove `<style>{% getBundle "css" %}</style>` and uncomment `<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">`
-2. Configure the server with the CSP directive `style-src: 'unsafe-inline'` (less secure).
+Leave `typekit.serif` / `typekit.sans` as empty strings to skip loading Adobe Fonts and use the CSS fallback stacks (`Palatino, Georgia, serif` / `Gill Sans, Calibri, sans-serif`).
+
+### 2. Home page opening prose
+
+Edit `content/index.njk`. The body of this file is freeform markdown/HTML rendered above the chapter list. Put your epigraph, foreword, or dedication here.
+
+### 3. Chapters
+
+Add files to `content/chapters/`. Each file needs this front matter:
+
+```yaml
+---
+title: The Title of This Chapter
+order: 1
+description: Optional. Used in the HTML meta description tag.
+---
+```
+
+- `order` controls the sort order in the TOC and prev/next navigation.
+- The filename determines the URL: `ch04-the-storm.md` → `/chapters/ch04-the-storm/`
+- Chapters are automatically tagged `chapters` and use `layouts/chapter.njk`.
+
+### 4. Literary markdown features
+
+Since `markdown-it` is configured with `html: true`, you can use raw HTML in your markdown:
+
+**Drop cap** (large decorated first letter + small-caps first line):
+
+```html
+<p class="drop">It was a dark and stormy night...</p>
+```
+
+**Scene heading** (centered italic with em-dash decoration, renders as `h4`):
+
+```markdown
+#### The Road at Midnight
+```
+
+**Character voice heading** (italic sans-serif, renders as `h3`):
+
+```markdown
+### The Stranger
+```
+
+**Section break** (centered small-caps, renders as `h2`):
+
+```markdown
+##
+```
+
+**Blockquote dialogue**:
+
+```markdown
+> "What are you doing here?"
+>
+> "Looking for something I lost."
+```
+
+### 5. About / credits page
+
+Edit `content/about.md`. This is the colophon and credits page. It uses nav key "About" order 2.
+
+### 6. Fonts
+
+To use Adobe Fonts, get a kit ID from [fonts.adobe.com](https://fonts.adobe.com) and put it in `metadata.js`. The kit ID is the hash in the `use.typekit.net/<id>.css` URL.
+
+To use different fonts entirely, update the `--font-serif` and `--font-sans` CSS variables in `css/index.css`.
+
+---
+
+## Project structure
+
+```
+content/
+  index.njk              # Home page (opening prose + TOC)
+  about.md               # Credits / colophon
+  chapters/
+    chapters.11tydata.js # Directory data: tags, layout, chapterNumber
+    ch01-*.md            # Chapter files
+    ch02-*.md
+    ...
+_includes/
+  layouts/
+    base.njk             # Root HTML shell
+    home.njk             # Home page (extends base, adds TOC)
+    chapter.njk          # Chapter page (extends base, adds prev/next)
+_data/
+  metadata.js            # Site title, author, Typekit IDs
+css/
+  index.css              # All literary styles
+```
+
+---
+
+## npm scripts
+
+| Command | Description |
+|---|---|
+| `npm run start` | Dev server at `0.0.0.0:8082` with live reload |
+| `npm run build` | Production build to `_site/` |
+| `npm run debug` | Build with Eleventy debug output |
+
+---
+
+## Drafts
+
+Add `draft: true` to any file's front matter. Drafts are visible during `npm run start` but excluded from `npm run build`.
+
+---
+
+## Content Security Policy
+
+The default setup inlines CSS via `{% getBundle "css" %}`. If your host enforces a strict CSP, switch to an external stylesheet in `_includes/layouts/base.njk`:
+
+```njk
+{# replace this: #}
+<style>{% getBundle "css" %}</style>
+
+{# with this: #}
+<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
+```
