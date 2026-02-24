@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+---
+<header class="chapter-header">
+  <p class="chapter-number">Chapter {{ chapterNumber }}</p>
+  <h1>{{ title }}</h1>
+</header>
+
+{{ content | safe }}
+
+{%- set previousPost = collections.chapters | getPreviousCollectionItem %}
+{%- set nextPost = collections.chapters | getNextCollectionItem %}
+{%- if previousPost or nextPost %}
+<ul class="links-nextprev">
+  <li>{%- if previousPost %}<a href="{{ previousPost.url }}">&#8592; {{ previousPost.data.title }}</a>{%- endif %}</li>
+  <li class="links-nextprev-next">{%- if nextPost %}<a href="{{ nextPost.url }}">{{ nextPost.data.title }} &#8594;</a>{%- endif %}</li>
+</ul>
+{%- endif %}
