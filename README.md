@@ -1,18 +1,6 @@
-# eleventy-literary-chaptered-base
+# eleventy-chapbook
 
-A base for literary chaptered sites built with [Eleventy v3](https://www.11ty.dev/) (ESM). Designed for serialized fiction, novellas, and other long-form prose — in the style of twohorses.lol and esther.lol.
-
-## Features
-
-- Per-chapter markdown files with automatic prev/next navigation
-- Table of contents on the home page
-- Literary CSS: cream background, fluid type, drop caps, scene/character headings, em-dash decorations
-- Adobe Fonts (Typekit) support with graceful fallback stacks
-- Drafts support (`draft: true` in front matter — excluded from production builds)
-- Automatic image optimization via `@11ty/eleventy-img`
-- Dev server binds to all interfaces (LAN, Tailscale) on port 8082
-
----
+An Eleventy v3 starter for chaptered literary sites. Designed for serialized fiction, novellas, and other long-form prose.
 
 ## Quick start
 
@@ -25,24 +13,22 @@ npm run start
 
 Then open `http://localhost:8082`.
 
----
-
 ## Customization
 
-### 1. Site metadata
+### Site metadata
 
 Edit `_data/metadata.js`:
 
 ```js
 export default {
-  title: "Your Work's Title",
+  title: "Your Literary Work",
   siteName: "yoursite.lol",
-  url: "https://yoursite.lol/",
+  url: "https://example.com/",
   language: "en",
   description: "A description of this work.",
   author: {
-    name: "Your Name",
-    url: "https://yoursite.lol/about/",
+    name: "Author Name",
+    url: "https://example.com/about/",
   },
   typekit: {
     serif: "",   // Adobe Fonts kit ID, e.g. "ztn6rcs"
@@ -51,15 +37,11 @@ export default {
 }
 ```
 
-Leave `typekit.serif` / `typekit.sans` as empty strings to skip loading Adobe Fonts and use the CSS fallback stacks (`Palatino, Georgia, serif` / `Gill Sans, Calibri, sans-serif`).
+Leave `typekit.serif` / `typekit.sans` as empty strings to use the CSS fallback stacks instead of Adobe Fonts.
 
-### 2. Home page opening prose
+### Chapters
 
-Edit `content/index.njk`. The body of this file is freeform markdown/HTML rendered above the chapter list. Put your epigraph, foreword, or dedication here.
-
-### 3. Chapters
-
-Add files to `content/chapters/`. Each file needs this front matter:
+Add files to `content/chapters/`. Each needs front matter:
 
 ```yaml
 ---
@@ -69,13 +51,24 @@ description: Optional. Used in the HTML meta description tag.
 ---
 ```
 
-- `order` controls the sort order in the TOC and prev/next navigation.
-- The filename determines the URL: `ch04-the-storm.md` → `/chapters/ch04-the-storm/`
-- Chapters are automatically tagged `chapters` and use `layouts/chapter.njk`.
+- `order` controls sort order in the TOC and prev/next navigation
+- Filename determines the URL: `ch04-the-storm.md` → `/chapters/ch04-the-storm/`
 
-### 4. Literary markdown features
+### Home page
 
-Since `markdown-it` is configured with `html: true`, you can use raw HTML in your markdown:
+Edit `content/index.njk`. Freeform markdown/HTML rendered above the chapter list. Put your epigraph, foreword, or dedication here.
+
+### About page
+
+Edit `content/about.md`. Colophon and credits. Uses nav key "About" order 2.
+
+### Fonts
+
+To use Adobe Fonts, get a kit ID from [fonts.adobe.com](https://fonts.adobe.com) and put it in `metadata.js`. The kit ID is the hash in the `use.typekit.net/<id>.css` URL. To use different fonts entirely, update the `--font-serif` and `--font-sans` CSS variables in `css/index.css`.
+
+### Literary markdown features
+
+`markdown-it` is configured with `html: true`, so raw HTML works in markdown:
 
 **Drop cap** (large decorated first letter + small-caps first line):
 
@@ -101,74 +94,36 @@ Since `markdown-it` is configured with `html: true`, you can use raw HTML in you
 ##
 ```
 
-**Blockquote dialogue**:
-
-```markdown
-> "What are you doing here?"
->
-> "Looking for something I lost."
-```
-
-### 5. About / credits page
-
-Edit `content/about.md`. This is the colophon and credits page. It uses nav key "About" order 2.
-
-### 6. Fonts
-
-To use Adobe Fonts, get a kit ID from [fonts.adobe.com](https://fonts.adobe.com) and put it in `metadata.js`. The kit ID is the hash in the `use.typekit.net/<id>.css` URL.
-
-To use different fonts entirely, update the `--font-serif` and `--font-sans` CSS variables in `css/index.css`.
-
----
-
 ## Project structure
 
 ```
 content/
-  index.njk              # Home page (opening prose + TOC)
+  index.njk              # Home page (opening prose + chapter list)
   about.md               # Credits / colophon
   chapters/
-    chapters.11tydata.js # Directory data: tags, layout, chapterNumber
-    ch01-*.md            # Chapter files
-    ch02-*.md
+    chapters.11tydata.js # Tags, layout for all chapters
+    ch01-the-beginning.md
+    ch02-the-middle.md
     ...
+_data/
+  metadata.js            # Title, author, URL, Typekit IDs
 _includes/
   layouts/
-    base.njk             # Root HTML shell
-    home.njk             # Home page (extends base, adds TOC)
-    chapter.njk          # Chapter page (extends base, adds prev/next)
-_data/
-  metadata.js            # Site title, author, Typekit IDs
+    base.njk             # HTML shell
+    home.njk             # Home page layout
+    chapter.njk          # Chapter layout with prev/next
 css/
   index.css              # All literary styles
 ```
 
----
-
 ## npm scripts
 
 | Command | Description |
-|---|---|
+|:--------|:------------|
 | `npm run start` | Dev server at `0.0.0.0:8082` with live reload |
 | `npm run build` | Production build to `_site/` |
 | `npm run debug` | Build with Eleventy debug output |
 
----
+## Deploy
 
-## Drafts
-
-Add `draft: true` to any file's front matter. Drafts are visible during `npm run start` but excluded from `npm run build`.
-
----
-
-## Content Security Policy
-
-The default setup inlines CSS via `{% getBundle "css" %}`. If your host enforces a strict CSP, switch to an external stylesheet in `_includes/layouts/base.njk`:
-
-```njk
-{# replace this: #}
-<style>{% getBundle "css" %}</style>
-
-{# with this: #}
-<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
-```
+The included `.github/workflows/pages.yml` builds and deploys to GitHub Pages on push to `main`. No configuration needed for custom domains — the workflow detects the repo name and sets the path prefix automatically.
