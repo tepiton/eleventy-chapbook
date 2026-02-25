@@ -62,9 +62,27 @@ Edit `content/index.njk`. Freeform markdown/HTML rendered above the chapter list
 
 Edit `content/about.md`. Colophon and credits. Uses nav key "About" order 2.
 
-### Fonts
+### Fonts, colors, and styles
 
-To use Adobe Fonts, get a kit ID from [fonts.adobe.com](https://fonts.adobe.com) and put it in `metadata.js`. The kit ID is the hash in the `use.typekit.net/<id>.css` URL. To use different fonts entirely, update the `--font-serif` and `--font-sans` CSS variables in `css/index.css`.
+All typographic and color tokens are CSS custom properties at the top of `css/index.css`:
+
+```css
+:root {
+  --font-serif: p22-stickley-pro-text, Palatino, "Palatino Linotype", Georgia, serif;
+  --font-sans: neue-kabel, "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  --color-bg: #fffff8;
+  --color-text: #1a1a18;
+  --color-muted: #666;
+  --color-link: #2a2a20;
+  --color-border: #ccc;
+}
+```
+
+Change any of these to retheme the site without touching the rest of the stylesheet.
+
+**Adobe Fonts (Typekit):** Set `typekit.serif` and/or `typekit.sans` in `_data/metadata.js` to a kit ID from [fonts.adobe.com](https://fonts.adobe.com). The kit ID is the hash in the `use.typekit.net/<id>.css` URL. Leave them as empty strings to fall back to the system font stacks defined in `--font-serif` and `--font-sans`.
+
+**Other web fonts:** Add a `<link>` to your font provider in `_includes/layouts/base.njk` and update the `--font-serif` or `--font-sans` variable to match.
 
 ### Literary markdown features
 
