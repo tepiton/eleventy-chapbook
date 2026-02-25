@@ -186,3 +186,10 @@ npm run start
 ```
 
 Binds to `0.0.0.0:8082`. On startup, Eleventy prints all available host addresses (loopback, LAN, Tailscale, etc.).
+
+---
+
+## Post-build
+
+- `README.md` rewritten from scratch — replaced the original eleventy-base-blog README with setup and customization instructions for the literary base.
+- `docs/THREE-TAKES.md` added — comparative review of this implementation against two parallel implementations of the same plan by other LLMs (codex-tree, opencode-tree).
