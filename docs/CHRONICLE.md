@@ -193,3 +193,18 @@ Binds to `0.0.0.0:8082`. On startup, Eleventy prints all available host addresse
 
 - `README.md` rewritten from scratch — replaced the original eleventy-base-blog README with setup and customization instructions for the literary base.
 - `docs/THREE-TAKES.md` added — comparative review of this implementation against two parallel implementations of the same plan by other LLMs (codex-tree, opencode-tree).
+
+---
+
+## README rewrite (2026-02-25)
+
+Rewrote `README.md`. Previous version had the title `eleventy-literary-chaptered-base` (the old package name) and was longer than necessary.
+
+New README covers:
+- Correct repo name `eleventy-chapbook` as title
+- `_data/metadata.js` schema including the `typekit` block and `siteName` field
+- Chapters, home page, about page, and fonts documented
+- Literary markdown features (drop cap, scene headings, character voice, section breaks) preserved from the old README
+- Project structure tree
+- npm scripts table
+- Deploy section
