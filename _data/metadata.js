@@ -1,11 +1,11 @@
 export default {
   title: "Chapbook",
-  siteName: "yoursite.lol",
-  url: "https://example.com/",
+  siteName: "orobia.dev",
+  url: "https://orobia.dev/",
   language: "en",
   description: "A description of this work.",
   author: {
     name: "Author Name",
-    url: "https://example.com/about/",
+    url: "https://orobia.dev/about/",
   },
 }

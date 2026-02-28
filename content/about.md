@@ -6,7 +6,7 @@ const eleventyNavigation = {
 ---
 # Credits
 
-This work was written by **Author Name**.
+This work was written by **Author Name**. It is served from [orobia.dev](https://orobia.dev/).
 
 ## Colophon
 
