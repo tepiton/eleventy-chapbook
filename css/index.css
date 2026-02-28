@@ -3,6 +3,8 @@
 :root {
   --font-serif: p22-stickley-pro-text, Palatino, "Palatino Linotype", Georgia, serif;
   --font-sans: neue-kabel, "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  --font-heading: var(--font-sans);
+  /* for serif headings: --font-heading: var(--font-serif); */
   --color-bg: #fffff8;
   --color-text: #1a1a18;
   --color-muted: #666;
@@ -147,7 +149,7 @@ p:last-child {
 }
 
 h1 {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);
   font-weight: normal;
   line-height: 1.2;
