@@ -208,3 +208,17 @@ New README covers:
 - Project structure tree
 - npm scripts table
 - Deploy section
+
+---
+
+## Font parameterization and Typekit (2026-02-27)
+
+CSS was already parameterized with `--font-serif` and `--font-sans` custom properties and already referenced `p22-stickley-pro-text` and `neue-kabel`. The only change was in `base.njk`: replaced the conditional `metadata.typekit` template logic with two baked-in Typekit `<link>` tags (kit IDs `ztn6rcs` and `pgn7ley`). Removed the `typekit` object from `metadata.js`.
+
+## Site URL, title, and nav (2026-02-27)
+
+- Set `metadata.url` to `https://orobia.dev/`
+- Set `metadata.siteName` to `"orobia.dev"`
+- Set `metadata.title` to `"Chapbook"`
+- Updated author URL to `https://orobia.dev/about/`
+- Updated `content/about.md` to reference orobia.dev
