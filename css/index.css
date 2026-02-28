@@ -147,7 +147,7 @@ p:last-child {
 }
 
 h1 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);
   font-weight: normal;
   line-height: 1.2;
@@ -247,6 +247,7 @@ a[href]:hover {
   margin: 0 0 0.5rem;
 }
 .chapter-header h1 {
+  font-family: var(--font-serif);
   margin: 0;
 }
 
