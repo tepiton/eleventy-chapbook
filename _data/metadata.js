@@ -1,5 +1,5 @@
 export default {
-  title: "Your Literary Work",
+  title: "Chapbook",
   siteName: "yoursite.lol",
   url: "https://example.com/",
   language: "en",
