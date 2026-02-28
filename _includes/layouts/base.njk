@@ -6,12 +6,8 @@
 		<title>{{ title or metadata.title }}</title>
 		<meta name="description" content="{{ description or metadata.description }}">
 
-		{%- if metadata.typekit.serif %}
-		<link rel="stylesheet" href="https://use.typekit.net/{{ metadata.typekit.serif }}.css">
-		{%- endif %}
-		{%- if metadata.typekit.sans and metadata.typekit.sans != metadata.typekit.serif %}
-		<link rel="stylesheet" href="https://use.typekit.net/{{ metadata.typekit.sans }}.css">
-		{%- endif %}
+		<link rel="stylesheet" href="https://use.typekit.net/ztn6rcs.css">
+		<link rel="stylesheet" href="https://use.typekit.net/pgn7ley.css">
 
 		<style>{% include "css/index.css" %}</style>
 		<style>{% getBundle "css" %}</style>
