@@ -2,6 +2,13 @@
 
 An Eleventy v3 starter for chaptered literary sites. Designed for serialized fiction, novellas, and other long-form prose.
 
+Part of a family of interoperable templates:
+- **eleventy-pamphlet** - minimal, single layout
+- **eleventy-chapbook** (this) - separate layouts, feature-rich
+- **eleventy-folio** - polished, with extras
+
+The `content/` directory is portable across all three. Swap templates to change the presentation without touching your content.
+
 ## Quick start
 
 ```
@@ -17,7 +24,7 @@ Then open `http://localhost:8082`.
 
 ### Site metadata
 
-Edit `_data/metadata.js`:
+Edit `content/_data/metadata.js`:
 
 ```js
 export default {
@@ -30,14 +37,10 @@ export default {
     name: "Author Name",
     url: "https://example.com/about/",
   },
-  typekit: {
-    serif: "",   // Adobe Fonts kit ID, e.g. "ztn6rcs"
-    sans: "",    // Adobe Fonts kit ID, e.g. "pgn7ley"
-  }
 }
 ```
 
-Leave `typekit.serif` / `typekit.sans` as empty strings to use the CSS fallback stacks instead of Adobe Fonts.
+Note: `metadata.js` lives inside `content/_data/` so the entire `content/` directory is self-contained and portable.
 
 ### Chapters
 
@@ -80,9 +83,9 @@ All typographic and color tokens are CSS custom properties at the top of `css/in
 
 Change any of these to retheme the site without touching the rest of the stylesheet.
 
-**Adobe Fonts (Typekit):** Set `typekit.serif` and/or `typekit.sans` in `_data/metadata.js` to a kit ID from [fonts.adobe.com](https://fonts.adobe.com). The kit ID is the hash in the `use.typekit.net/<id>.css` URL. Leave them as empty strings to fall back to the system font stacks defined in `--font-serif` and `--font-sans`.
+**Adobe Fonts (Typekit):** This template uses `p22-stickley-pro-text` and `neue-kabel` from Adobe Fonts. The kit IDs are baked into `_includes/layouts/base.njk`. To use different fonts, replace the Typekit `<link>` tags and update the CSS variables.
 
-**Other web fonts:** Add a `<link>` to your font provider in `_includes/layouts/base.njk` and update the `--font-serif` or `--font-sans` variable to match.
+**Other web fonts:** Add a `<link>` to your font provider in `_includes/layouts/base.njk` and update the `--font-serif` or `--font-sans` variable in `css/index.css` to match.
 
 ### Literary markdown features
 
@@ -116,15 +119,15 @@ Change any of these to retheme the site without touching the rest of the stylesh
 
 ```
 content/
+  _data/
+    metadata.js          # Title, author, URL
   index.njk              # Home page (opening prose + chapter list)
   about.md               # Credits / colophon
   chapters/
-    chapters.11tydata.js # Tags, layout for all chapters
+    chapters.11tydata.js # Layout for all chapters
     ch01-the-beginning.md
     ch02-the-middle.md
     ...
-_data/
-  metadata.js            # Title, author, URL, Typekit IDs
 _includes/
   layouts/
     base.njk             # HTML shell
@@ -133,6 +136,8 @@ _includes/
 css/
   index.css              # All literary styles
 ```
+
+The `content/` directory is designed to be portable. Copy it to eleventy-pamphlet or eleventy-folio to get a different presentation with the same content.
 
 ## npm scripts
 

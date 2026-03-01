@@ -222,3 +222,21 @@ CSS was already parameterized with `--font-serif` and `--font-sans` custom prope
 - Set `metadata.title` to `"Chapbook"`
 - Updated author URL to `https://orobia.dev/about/`
 - Updated `content/about.md` to reference orobia.dev
+
+---
+
+## Content portability (2026-02-28)
+
+Made `content/` fully portable across the three template family (pamphlet, chapbook, folio).
+
+### Changes
+
+1. Moved `_data/metadata.js` to `content/_data/metadata.js`
+2. Updated `eleventy.config.js` data path from `../_data` to `_data`
+3. Changed chapters collection from `getFilteredByTag("chapters")` to `getFilteredByGlob("content/chapters/*.md")`
+4. Simplified `chapters.11tydata.js` - removed `tags`, kept layout only
+5. Moved port from `eleventy.config.js` to `package.json` start script
+
+### Result
+
+The `content/` directory is now self-contained. Drop it into any of the three templates and it works. Each template provides its own layouts, CSS, and personality.

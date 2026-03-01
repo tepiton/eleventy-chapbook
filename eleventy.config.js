@@ -50,7 +50,7 @@ export default async function(eleventyConfig) {
 
 	// Chapters collection sorted ascending by `order` front matter
 	eleventyConfig.addCollection("chapters", function(collectionApi) {
-		return collectionApi.getFilteredByTag("chapters").sort((a, b) => {
+		return collectionApi.getFilteredByGlob("content/chapters/*.md").sort((a, b) => {
 			const aOrder = a.data.order ?? 999
 			const bOrder = b.data.order ?? 999
 			return aOrder - bOrder
@@ -86,7 +86,6 @@ export default async function(eleventyConfig) {
 
 	eleventyConfig.setServerOptions({
 		showAllHosts: true,
-		port: 8082,
 	})
 }
 
@@ -105,7 +104,7 @@ export const config = {
 	dir: {
 		input: "content",
 		includes: "../_includes",
-		data: "../_data",
+		data: "_data",
 		output: "_site"
 	},
 }
