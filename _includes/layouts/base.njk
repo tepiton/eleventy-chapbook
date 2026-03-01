@@ -26,6 +26,24 @@
 				{%- endfor %}
 				</ul>
 			</nav>
+
+			<div class="theme-switcher">
+				<button id="theme-toggle" class="theme-toggle" title="Change theme">◐</button>
+				<div id="theme-options" class="theme-options">
+					<a href="#" class="theme-option" data-theme="light">
+						<span class="theme-option-icon">✱</span>
+						<span>Light</span>
+					</a>
+					<a href="#" class="theme-option" data-theme="dark">
+						<span class="theme-option-icon">✻</span>
+						<span>Dark</span>
+					</a>
+					<a href="#" class="theme-option" data-theme="system">
+						<span class="theme-option-icon">◐</span>
+						<span>System</span>
+					</a>
+				</div>
+			</div>
 		</header>
 
 		<main id="main">
@@ -36,6 +54,7 @@
 			<p>{{ metadata.author.name }}</p>
 		</footer>
 
+		<script type="module" src="/js/theme-switcher.js"></script>
 		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
 	</body>
 </html>

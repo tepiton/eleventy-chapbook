@@ -23,6 +23,9 @@ export default async function(eleventyConfig) {
 		"./public/": "/"
 	})
 
+	// Copy JS files
+	eleventyConfig.addPassthroughCopy("js")
+
 	// Watch CSS and image files
 	eleventyConfig.addWatchTarget("css/**/*.css")
 	eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpg,jpeg,gif}")
