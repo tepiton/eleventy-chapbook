@@ -247,6 +247,26 @@ blockquote p:last-child {
   margin-bottom: 0;
 }
 
+/* Details/Summary */
+summary {
+  font-size: inherit;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 3em;
+  margin-left: -2em;
+  text-align: left;
+  letter-spacing: -.04em;
+}
+
+details {
+  font-family: monospace;
+  color: var(--color-muted);
+  margin-left: 2em;
+  margin-right: 2em;
+  font-size: 60%;
+  line-height: 1.125;
+}
+
 /* Drop cap */
 .drop::first-letter {
   font-size: 3.5em;
