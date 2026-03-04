@@ -54,10 +54,11 @@ export default async function(eleventyConfig) {
 	// Chapters collection sorted ascending by `order` front matter
 	eleventyConfig.addCollection("chapters", function(collectionApi) {
 		return collectionApi.getFilteredByGlob("content/chapters/*.md").sort((a, b) => {
-			const aOrder = a.data.order ?? 999
-			const bOrder = b.data.order ?? 999
-			return aOrder - bOrder
-		})
+			const aOrder = a.data.order ?? 999;
+			const bOrder = b.data.order ?? 999;
+			if (aOrder !== bOrder) return aOrder - bOrder;
+			return a.inputPath.localeCompare(b.inputPath);
+		});
 	})
 
 	// Plugins
