@@ -28,7 +28,7 @@ content/
     chapters.11tydata.js    # layout: layouts/chapter.njk
     *.md
   content.11tydata.js       # layout: layouts/base.njk
-  index.njk, about.md, 404.md
+  index.md, about.md, 404.md
 _includes/layouts/
   base.njk, home.njk, chapter.njk
 css/index.css
@@ -53,6 +53,11 @@ Aligned with pamphlet and folio for full portability.
 
 1. Removed `eleventyComputed` block from `chapters.11tydata.js` - now just `layout: "layouts/chapter.njk"`
 2. Updated `chapter.njk` to use `{{ order }}` instead of `{{ chapterNumber }}`
+
+### 2026-03-03: Standardize content files
+
+1. Renamed `index.njk` to `index.md` for consistency with pamphlet
+2. Updated `about.md` with colophon and GitHub source link
 
 ### 2026-02-28: Content portability
 
