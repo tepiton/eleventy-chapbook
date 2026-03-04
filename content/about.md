@@ -1,12 +1,15 @@
----js
-const eleventyNavigation = {
-	key: "About",
-	order: 2
-};
 ---
-# Credits
+title: About
+eleventyNavigation:
+  key: About
+  order: 2
+---
 
-This work was written by **Author Name**. It is served from [orobia.dev](https://orobia.dev/).
+# [{{ title }}](/)
+
+This site is served from [orobia.dev](https://orobia.dev/).
+
+Replace this page with your own credits, colophon, and acknowledgments.
 
 ## Colophon
 
@@ -14,6 +17,6 @@ Set in [p22-stickley-pro-text](https://fonts.adobe.com/fonts/p22-stickley-pro) a
 
 Built with [Eleventy](https://www.11ty.dev/).
 
-## Acknowledgments
+## Source
 
-Replace this page with your own credits, colophon, and acknowledgments.
+[github.com/tepiton/eleventy-chapbook](https://github.com/tepiton/eleventy-chapbook)
