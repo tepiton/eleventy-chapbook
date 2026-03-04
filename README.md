@@ -42,9 +42,9 @@ export default {
 
 Note: `metadata.js` lives inside `content/_data/` so the entire `content/` directory is self-contained and portable.
 
-### Chapters
+### Single-page vs multi-chapter
 
-Add files to `content/chapters/`. Each needs front matter:
+**Multi-chapter works:** Add files to `content/chapters/`. Each needs front matter:
 
 ```yaml
 ---
@@ -56,6 +56,9 @@ description: Optional. Used in the HTML meta description tag.
 
 - `order` controls sort order in the TOC and prev/next navigation
 - Filename determines the URL: `ch04-the-storm.md` → `/chapters/ch04-the-storm/`
+- Chapter pages get a numbered header and prev/next navigation
+
+**Single-page works:** Delete the `content/chapters/` directory entirely. Your `index.njk` becomes the whole work. It inherits the base layout with no chapter navigation or TOC.
 
 ### Home page
 
