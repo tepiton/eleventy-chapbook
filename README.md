@@ -58,6 +58,8 @@ description: Optional. Used in the HTML meta description tag.
 - Filename determines the URL: `ch04-the-storm.md` → `/chapters/ch04-the-storm/`
 - Chapter pages get a numbered header and prev/next navigation
 
+**Chapter sorting:** Chapters are sorted by `order` property (ascending, fallback to 999 if missing), then by filename alphabetically for determinism.
+
 **Single-page works:** Delete the `content/chapters/` directory entirely. Your `index.md` becomes the whole work. It inherits the base layout with no chapter navigation or TOC.
 
 ### Home page

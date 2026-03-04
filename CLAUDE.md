@@ -43,6 +43,12 @@ All three templates must have:
 4. `chapters` collection via `getFilteredByGlob("content/chapters/*.md")`
 5. Chapter templates use `{{ order }}` (not `{{ chapterNumber }}`)
 
+### Chapter sorting
+
+Chapters are sorted by:
+1. `order` property (ascending, fallback to 999 if missing)
+2. Filename (alphabetical, for determinism when order is equal)
+
 ## Font Setup (all three templates)
 
 All three use the same fonts from esther.lol, baked in directly:
