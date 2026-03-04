@@ -58,11 +58,11 @@ description: Optional. Used in the HTML meta description tag.
 - Filename determines the URL: `ch04-the-storm.md` → `/chapters/ch04-the-storm/`
 - Chapter pages get a numbered header and prev/next navigation
 
-**Single-page works:** Delete the `content/chapters/` directory entirely. Your `index.njk` becomes the whole work. It inherits the base layout with no chapter navigation or TOC.
+**Single-page works:** Delete the `content/chapters/` directory entirely. Your `index.md` becomes the whole work. It inherits the base layout with no chapter navigation or TOC.
 
 ### Home page
 
-Edit `content/index.njk`. Freeform markdown/HTML rendered above the chapter list. Put your epigraph, foreword, or dedication here.
+Edit `content/index.md`. Freeform markdown/HTML rendered above the chapter list. Put your epigraph, foreword, or dedication here.
 
 ### About page
 
@@ -124,7 +124,7 @@ Change any of these to retheme the site without touching the rest of the stylesh
 content/
   _data/
     metadata.js          # Title, author, URL
-  index.njk              # Home page (opening prose + chapter list)
+  index.md               # Home page (opening prose + chapter list)
   about.md               # Credits / colophon
   chapters/
     chapters.11tydata.js # Layout for all chapters
