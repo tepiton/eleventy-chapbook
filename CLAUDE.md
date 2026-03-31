@@ -57,7 +57,7 @@ All three use the same fonts from esther.lol, baked in directly:
 - **Heading**: `neue-kabel, 'Gill Sans', 'Helvetica Neue', sans-serif`
 - **Typekit kits**: `ztn6rcs` (p22-stickley-pro-text) and `pgn7ley` (neue-kabel), loaded as hardcoded `<link>` tags in `base.njk` (not via metadata)
 - **Font size**: `clamp(1rem, .8rem + 1vw, 1.25rem)` on `html` — aligned across all three templates
-- CSS vars: `--font-serif` and `--font-sans` in `:root`
+- CSS vars: `--font-body` and `--font-heading` in `:root`
 
 ## File Locations
 
@@ -71,7 +71,7 @@ All three use the same fonts from esther.lol, baked in directly:
 ## Unique to Chapbook
 
 - Has dedicated `home.njk` layout with chapter list TOC
-- CSS uses `--font-serif` and `--font-sans` (not `--font-body`/`--font-heading`)
+- CSS uses `--font-body` and `--font-heading` (harmonized with folio and pamphlet)
 - Literary markdown features documented: drop caps, scene headings, character voice, section breaks
 
 ## npm Scripts

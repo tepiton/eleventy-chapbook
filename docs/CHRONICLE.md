@@ -17,7 +17,7 @@ Converted from `eleventy-base-blog` v9 into a literary starter. See `docs/THREE-
 - **Layout assignment**: Via `chapters.11tydata.js` and `content.11tydata.js`
 - **Port**: 8082 in `package.json` start script
 - **Fonts**: Typekit kits `ztn6rcs` and `pgn7ley` baked into `base.njk`
-- **CSS vars**: `--font-serif` and `--font-sans` in `:root`
+- **CSS vars**: `--font-body` and `--font-heading` in `:root`
 
 ## Directory Structure
 
@@ -46,6 +46,14 @@ css/index.css
 ---
 
 ## Recent Changes
+
+### 2026-03-30: Schema and CSS variable alignment
+
+Aligned with folio and pamphlet for cross-template parity.
+
+1. Renamed `--font-serif` to `--font-body` and `--font-sans` to `--font-heading` throughout `css/index.css`
+2. Dropped `siteName` from `content/_data/metadata.js`, added `subtitle: ""` and `image: ""`
+3. Added OG meta tags to `base.njk`; `og:image` is conditional
 
 ### 2026-03-03: Simplify chapter layout
 

@@ -1,6 +1,6 @@
 export default {
   title: "Chapbook",
-  siteName: "orobia.dev",
+  subtitle: "",
   url: "https://orobia.dev/",
   language: "en",
   description: "A description of this work.",
@@ -8,4 +8,5 @@ export default {
     name: "Author Name",
     url: "https://orobia.dev/about/",
   },
+  image: "",
 }

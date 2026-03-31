@@ -1,12 +1,9 @@
 /* Literary base — typographic CSS */
 
 :root {
-  --font-serif: p22-stickley-pro-text, Palatino, "Palatino Linotype", Georgia, serif;
-  --font-sans: neue-kabel, "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-  --font-heading: var(--font-sans);
+  --font-body: p22-stickley-pro-text, Palatino, "Palatino Linotype", Georgia, serif;
+  --font-heading: neue-kabel, "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   --sans-serif-features: "onum", "ss04", "xs06", "ss08", "ss11", "xs14";
-  /* for serif headings: --font-heading: var(--font-serif); */
-  
   /* Light theme (default) */
   --color-bg: #fffff8;
   --color-text: #1a1a18;
@@ -65,7 +62,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: var(--font-size);
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -116,7 +113,7 @@ header {
   padding-left: calc((100% - var(--measure)) / 2);
   padding-right: calc((100% - var(--measure)) / 2);
   border-bottom: 1px solid var(--color-border);
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: 0.85rem;
   letter-spacing: 0.04em;
 }
@@ -143,7 +140,7 @@ header {
 .nav-item a {
   color: var(--color-muted);
   text-decoration: none;
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: 0.85rem;
 }
 .nav-item a:hover,
@@ -168,7 +165,7 @@ footer {
   margin: 0 auto;
   padding: 2rem 0;
   border-top: 1px solid var(--color-border);
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: 0.8rem;
   color: var(--color-muted);
   text-align: center;
@@ -195,7 +192,7 @@ h1 {
 }
 
 h2 {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -207,7 +204,7 @@ h2 {
 
 /* Character headings — italic sans */
 h3 {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-style: italic;
   font-size: 1rem;
   font-weight: normal;
@@ -217,7 +214,7 @@ h3 {
 
 /* Scene headings — em-dash decorated, centered, italic */
 h4 {
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-style: italic;
   font-weight: normal;
   font-size: 1rem;
@@ -273,7 +270,7 @@ details {
   float: left;
   line-height: 0.8;
   margin: 0.05em 0.1em 0 0;
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-weight: normal;
 }
 .drop::first-line {
@@ -299,7 +296,7 @@ a[href]:hover {
   border-bottom: 1px solid var(--color-border);
 }
 .chapter-header .chapter-number {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -319,7 +316,7 @@ a[href]:hover {
   padding: 1.5rem 0 0;
   margin: 3rem 0 0;
   border-top: 1px solid var(--color-border);
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: 0.85rem;
 }
 .links-nextprev > * {
@@ -357,13 +354,13 @@ a[href]:hover {
   padding: 0.75rem 0;
   text-decoration: none;
   color: var(--color-text);
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
 }
 .chapter-list li a:hover {
   color: var(--color-link);
 }
 .chapter-list .chapter-number {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -414,7 +411,7 @@ a[href]:hover {
   min-width: 7em;
   margin-top: 0.25em;
   font-size: 0.85rem;
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-feature-settings: var(--sans-serif-features);
 }
 
