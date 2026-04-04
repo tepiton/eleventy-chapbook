@@ -38,7 +38,7 @@ jobs:
         run: |
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
           if [[ "$REPO_NAME" == *.github.io ]]; then
-            echo "PATHPREFIX=/" >> "$GITHUB_ENV"
+            echo "PATHPREFIX=$REPO_NAME/" >> "$GITHUB_ENV"
           else
             echo "PATHPREFIX=/" >> "$GITHUB_ENV"
           fi
