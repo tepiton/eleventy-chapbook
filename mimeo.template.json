@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "substitutions": [
+    {
+      "file": "content/_data/metadata.js",
+      "format": "js-key",
+      "key": "url",
+      "value": "https://{domain}/"
+    },
+    {
+      "file": "content/about.md",
+      "format": "string-replace",
+      "match": "orobia.dev",
+      "value": "{domain}"
+    }
+  ]
+}
