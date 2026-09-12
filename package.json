@@ -1,5 +1,5 @@
 {
-	"name": "eleventy-literary-chaptered-base",
+	"name": "eleventy-chapbook",
 	"version": "1.0.0",
 	"description": "A base for literary chaptered sites built with Eleventy v3.",
 	"type": "module",
