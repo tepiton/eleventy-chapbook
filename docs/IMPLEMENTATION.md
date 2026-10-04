@@ -8,6 +8,7 @@
 | 1 | Cleanup & Portability | ✅ Complete | 2026-02-25–28 |
 | 2 | Alignment | ✅ Complete | 2026-03-03 |
 | 3 | Schema Parity | ✅ Complete | 2026-03-30 |
+| 4 | Maintenance | ✅ Complete | 2026-10-03 |
 
 ---
 
@@ -54,6 +55,16 @@ See: chronicles/phase-2-alignment.md
 
 See: chronicles/phase-3-parity.md
 
+### Phase 4: Maintenance (2026-10-03)
+
+- npm 12 install hygiene: pinned `allowScripts` (fsevents), img ^7.0.0
+  (sharp 0.35.5, image-size gone), `.npmrc` fund/audit silenced
+  (DEC-009), engines >=22, `.nvmrc` 24
+- Fresh install is silent; `npm audit` on demand reports only the
+  upstream-unfixable braces→chokidar chain
+
+See: chronicles/phase-4-maintenance.md
+
 ---
 
 ## Current State
@@ -67,13 +78,13 @@ The template family is stable. All three templates (folio, pamphlet, chapbook) s
 
 chapbook has the richest CSS (drop caps, scene headings, character headings) and serves as the reference for literary CSS features.
 
-No active feature work. Future changes should track as Phase 4.
+No active feature work. Future changes should track as Phase 5.
 
 ---
 
 ## Future Phases
 
-### Phase 4: (Unplanned)
+### Phase 5: (Unplanned)
 
 Ideas if needed:
 
