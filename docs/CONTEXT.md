@@ -2,14 +2,15 @@
 phase: 4
 phase_name: Maintenance
 updated: 2026-10-04
-last_commit: 881eadc
+last_commit: 982c377
 ---
 
 ## Current Focus
 
-dek ported from folio and the unused eleventy-img transform dropped
-(Phase 4, Entry 2). folio retires; chapbook is the literary chaptered
-template. Template is in maintenance mode.
+dek ported from folio, transform dropped (Entry 2), and `content/img`
+passthrough added (Entry 3) — chapbook is the literary chaptered
+template and enforces the content contract with pamphlet and the
+blogs. Template is in maintenance mode.
 
 ## Active Tasks
 
@@ -26,8 +27,9 @@ None.
 - `content/` is portable: copy to pamphlet unchanged
 - Chapters support `dek` — subtitle under the heading and in the TOC;
   README documents the field
-- No image transform (DEC-010): images copy through unchanged; 141
-  packages; `engines.node` stays >=22 (DEC-011)
+- No image transform (DEC-010): `content/img/` copies to `_site/img/`
+  verbatim (DEC-012); 141 packages; `engines.node` stays >=22
+  (DEC-011)
 - npm 12: `allowScripts` pins `fsevents@2.3.3`
 - Remaining audit findings are braces→chokidar, dev-server-only and
   unfixable on eleventy 3; hidden from install output only (DEC-009)
