@@ -1,15 +1,15 @@
 ---
 phase: 4
 phase_name: Maintenance
-updated: 2026-10-03
-last_commit: c15d230
+updated: 2026-10-04
+last_commit: 881eadc
 ---
 
 ## Current Focus
 
-npm 12 install-hygiene pass complete (Phase 4): fresh installs are
-silent, no fixable advisories remain, Node floor is truthful. Template
-is in maintenance mode.
+dek ported from folio and the unused eleventy-img transform dropped
+(Phase 4, Entry 2). folio retires; chapbook is the literary chaptered
+template. Template is in maintenance mode.
 
 ## Active Tasks
 
@@ -23,10 +23,12 @@ None.
 ## Context
 
 - chapbook serves from orobia.dev, port 8082
-- `content/` is portable: copy to pamphlet or folio unchanged
-- npm 12: `allowScripts` pins `fsevents@2.3.3`; sharp 0.35.x needs no
-  pin (no install script)
-- eleventy-img@7 requires node >=22 (`engines` and `.nvmrc` say so)
+- `content/` is portable: copy to pamphlet unchanged
+- Chapters support `dek` — subtitle under the heading and in the TOC;
+  README documents the field
+- No image transform (DEC-010): images copy through unchanged; 141
+  packages; `engines.node` stays >=22 (DEC-011)
+- npm 12: `allowScripts` pins `fsevents@2.3.3`
 - Remaining audit findings are braces→chokidar, dev-server-only and
   unfixable on eleventy 3; hidden from install output only (DEC-009)
 - Chapter sort: `order` fallback 999 + secondary sort by filename;
