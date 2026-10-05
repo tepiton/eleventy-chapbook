@@ -49,3 +49,22 @@ plus sharp to every install.
 **Decisions**: DEC-010, DEC-011.
 
 **Files**: commits 89c7ad4, dbfa114
+
+## Entry 3: content/img passthrough (2026-10-04)
+
+**What**: Images in `content/img/` copy to `_site/img/` unchanged.
+
+**Why**: The content contract (tepiton/content-fixture) expects
+literary templates to serve content-shipped images verbatim. DEC-010
+era left chapbook with no image handling at all — Eleventy 3 copies a
+file only when its extension is in `templateFormats` or an explicit
+passthrough covers it, so a content image simply did not land.
+
+**How**: `addPassthroughCopy("content/img")`, the same line pamphlet
+carries; README documents the convention. Verified with the fixture
+corpus: `content/img/fixture.png` lands verbatim, no plugin, no
+weight.
+
+**Decisions**: DEC-012.
+
+**Files**: this commit.

@@ -201,3 +201,30 @@ operational gain; CI still runs node 24.
 **Consequences**: Users on node 18–21 must upgrade even though the
 build itself would run. Settles OD 6 in mimeo's
 TEMPLATE_CONSOLIDATION.md.
+
+---
+
+### DEC-012: Images ship with content, copied verbatim (2026-10-04)
+
+**Status**: Active
+
+**Context**: With DEC-010 the image transform plugin is gone, and
+Eleventy 3 copies a file only when its extension appears in
+`templateFormats` or an explicit passthrough covers it — chapbook had
+neither for content images, so a chapter image silently never landed
+in `_site/`.
+
+**Decision**: `addPassthroughCopy("content/img")`, matching
+pamphlet's convention: images ship inside `content/`, land in
+`_site/img/` unchanged, and cost nothing (no plugin, no binaries).
+Optimized output is opt-in: add the eleventy-img transform plugin (an
+import and one `addPlugin` call).
+
+**Alternatives**: re-add the transform plugin for everyone (19MB of
+install for a demo with no images — the DEC-010 rationale); list
+image extensions in `templateFormats` (copies images from anywhere
+under `content/`, but leaves each template with its own convention
+instead of one shared with pamphlet).
+
+**Consequences**: One directory convention to document; users wanting
+AVIF/WebP add the plugin themselves.
