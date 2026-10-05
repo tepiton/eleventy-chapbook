@@ -22,6 +22,9 @@ export default async function(eleventyConfig) {
 		"./public/": "/"
 	})
 
+	// Copy images shipped with content (matches pamphlet's convention)
+	eleventyConfig.addPassthroughCopy("content/img")
+
 	// Copy JS files
 	eleventyConfig.addPassthroughCopy("js")
 

@@ -62,6 +62,8 @@ description: Optional. Used in the HTML meta description tag.
 
 **Chapter sorting:** Chapters are sorted by `order` property (ascending, fallback to 999 if missing), then by filename alphabetically for determinism.
 
+**Images:** Put images in `content/img/`; they are copied to `_site/img/` unchanged. Images are not optimized — add the eleventy-img transform plugin (an import and one `addPlugin` call) if you want AVIF/WebP output.
+
 **Single-page works:** Delete the `content/chapters/` directory entirely. Your `index.md` becomes the whole work. It inherits the base layout with no chapter navigation or TOC.
 
 ### Home page
