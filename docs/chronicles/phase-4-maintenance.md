@@ -22,3 +22,30 @@ noisy and two dependencies carried high-severity advisories.
 **Decisions**: DEC-009.
 
 **Files**: commits 47a1d4e, 310515d, d133909, 438f054, 0b6149a
+
+## Entry 2: dek ported from folio; image transform dropped (2026-10-04)
+
+**What**: Chapters support a `dek` front-matter subtitle — rendered
+under the chapter heading and in the home TOC — and the eleventy-img
+transform plugin is gone from the build.
+
+**Why**: folio retires (its only feature chapbook lacked was `dek`;
+chapbook inherits it). The transform processed nothing — the demo
+content has no images — while adding 18MB of prebuilt `@img/` binaries
+plus sharp to every install.
+
+**How**:
+
+- `chapter.njk` gains the conditional dek line under the `h1`;
+  `home.njk`'s TOC stacks the dek under the title in a
+  `.chapter-entry` column; `css/index.css` styles both
+- `ch01-the-beginning.md` carries a demo dek; README documents the
+  field
+- `eleventy.config.js`: import and `addPlugin` block removed;
+  `@11ty/eleventy-img` dropped from devDependencies — 141 packages
+  (folio's tree measured 137); build output verified byte-identical
+  before and after the drop
+
+**Decisions**: DEC-010, DEC-011.
+
+**Files**: commits 89c7ad4, dbfa114

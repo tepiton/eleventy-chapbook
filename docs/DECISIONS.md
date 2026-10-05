@@ -157,3 +157,47 @@ Drop `audit=false` when eleventy 4 (chokidar 5) lands.
 forcing chokidar 4/5 via overrides (breaks glob-based watching on
 eleventy 3); leaving the report visible (alarms consumers who cannot
 act on it).
+
+---
+
+### DEC-010: Image transform plugin removed (2026-10-04)
+
+**Status**: Active
+
+**Context**: The template shipped `eleventyImageTransformPlugin`, but
+its demo content contains no images — the plugin processed nothing in
+the shipped build while adding 18MB of prebuilt `@img/` binaries plus
+sharp to every install.
+
+**Decision**: Remove the import, the `addPlugin` call, and the
+`@11ty/eleventy-img` devDependency. Images in `content/` still copy
+through to `_site/` unchanged.
+
+**Alternatives**: keep the plugin for users who add chapter art — every
+install pays 19MB for a capability the demo never exercises. A site
+that wants optimized images adds the transform back: an import and one
+`addPlugin` call.
+
+**Consequences**: Install drops 159 → 141 packages. Image optimization
+remains in the fleet where it runs on real content (the blogs;
+product/service generate icons with sharp in a script).
+
+---
+
+### DEC-011: engines.node stays >=22 after the img drop (2026-10-04)
+
+**Status**: Active
+
+**Context**: The >=22 floor was raised for eleventy-img@7 (commit
+d133909). DEC-010 removed that dependency; chapbook's remaining tree
+needs no more than eleventy's own >=18.
+
+**Decision**: Keep `engines.node` >=22 (`.nvmrc` 24, CI 24) — one
+floor across the six surviving templates instead of five-and-one.
+
+**Alternatives**: return to >=18 — splits the fleet's floor for no
+operational gain; CI still runs node 24.
+
+**Consequences**: Users on node 18–21 must upgrade even though the
+build itself would run. Settles OD 6 in mimeo's
+TEMPLATE_CONSOLIDATION.md.
