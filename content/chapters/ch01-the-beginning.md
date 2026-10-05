@@ -1,6 +1,7 @@
 ---
 title: The Beginning
 order: 1
+dek: The kind of morning that makes promises it cannot keep.
 description: How it all started.
 ---
 

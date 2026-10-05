@@ -306,6 +306,10 @@ a[href]:hover {
 .chapter-header h1 {
   margin: 0;
 }
+.chapter-header .chapter-dek {
+  color: var(--color-muted);
+  margin: 0.5rem 0 0;
+}
 
 /* Prev/next navigation */
 .links-nextprev {
@@ -368,8 +372,17 @@ a[href]:hover {
   min-width: 5ch;
   flex-shrink: 0;
 }
+.chapter-list .chapter-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
 .chapter-list .chapter-title {
   font-style: italic;
+}
+.chapter-list .chapter-dek {
+  color: var(--color-muted);
+  font-size: 0.85rem;
 }
 
 /* Theme Switcher */

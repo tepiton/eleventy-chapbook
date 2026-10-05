@@ -50,11 +50,13 @@ Note: `metadata.js` lives inside `content/_data/` so the entire `content/` direc
 ---
 title: The Title of This Chapter
 order: 1
+dek: Optional. A one-line subtitle shown under the chapter title and in the TOC.
 description: Optional. Used in the HTML meta description tag.
 ---
 ```
 
 - `order` controls sort order in the TOC and prev/next navigation
+- `dek` adds a subtitle beneath the chapter heading (and under the title in the TOC)
 - Filename determines the URL: `ch04-the-storm.md` → `/chapters/ch04-the-storm/`
 - Chapter pages get a numbered header and prev/next navigation
 

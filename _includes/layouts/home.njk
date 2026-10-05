@@ -9,7 +9,10 @@ layout: layouts/base.njk
     <li>
       <a href="{{ chapter.url }}">
         <span class="chapter-number">{{ chapter.data.order }}</span>
-        <span class="chapter-title">{{ chapter.data.title }}</span>
+        <span class="chapter-entry">
+          <span class="chapter-title">{{ chapter.data.title }}</span>
+          {%- if chapter.data.dek %}<span class="chapter-dek">{{ chapter.data.dek }}</span>{% endif %}
+        </span>
       </a>
     </li>
   {%- endfor %}
