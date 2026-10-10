@@ -68,3 +68,26 @@ weight.
 **Decisions**: DEC-012.
 
 **Files**: this commit.
+
+## Entry 4: folio references purged from living docs (2026-10-09)
+
+**What**: README.md and CLAUDE.md no longer present eleventy-folio
+as a living template — the family is the four document templates
+(chapbook, pamphlet, prose-blog, tech-blog) under the content
+contract.
+
+**Why**: folio retired 2026-10-04 (dek ported here, Entry 2; repo
+archived), but chapbook's docs still described a three-template
+family with a stale templates path.
+
+**How**:
+
+- README: four-template family list with the CONTENT-CONTRACT.md
+  link; portability line says "any of the other document templates"
+- CLAUDE.md: folio out of the port list and file-locations table,
+  git-remote note deleted, "all three" phrasing reworded,
+  retirement note added, templates path fixed to tepiton/TEMPLATES
+
+**Decisions**: none — documentation only, no code changed.
+
+**Files**: this commit.

@@ -2,17 +2,16 @@
 
 ## Project Overview
 
-This is the `eleventy-chapbook` template repo (`github.com/tepiton/eleventy-chapbook`), an Eleventy v3 starter for chaptered literary sites. It is one of three interoperable templates:
+This is the `eleventy-chapbook` template repo (`github.com/tepiton/eleventy-chapbook`), an Eleventy v3 starter for chaptered literary sites. It is one of the interoperable document templates, with eleventy-pamphlet, prose-blog, and tech-blog (eleventy-folio was retired 2026-10-04):
 
 - **eleventy-pamphlet** → served from `orobia.lol` (port 8086)
 - **eleventy-chapbook** → served from `orobia.dev` (port 8082)
-- **eleventy-folio** → served from `orobia.net` (port 8084)
 
-All three live at `/Users/philip/projects/mimeo-sites/TEMPLATES/`.
+All live at `/Users/philip/projects/tepiton/TEMPLATES/`.
 
 ## Content Portability
 
-The `content/` directory is fully portable across all three templates. Drop a `content/` folder into any of the three repos and it renders correctly.
+The `content/` directory is portable across the document templates (chapbook, pamphlet, prose-blog, tech-blog) under the content contract (`CONTENT-CONTRACT.md` in tepiton/content-fixture). Drop a `content/` folder into any of them and it renders correctly.
 
 ### Standardized content/ structure
 
@@ -36,7 +35,7 @@ content/
 
 ### Requirements for portability
 
-All three templates must have:
+Both literary templates must have:
 1. `content/_data/metadata.js` (same path, same schema)
 2. `_includes/layouts/base.njk` (default layout)
 3. `_includes/layouts/chapter.njk` (chapter layout, extends base.njk)
@@ -49,34 +48,34 @@ Chapters are sorted by:
 1. `order` property (ascending, fallback to 999 if missing)
 2. Filename (alphabetical, for determinism when order is equal)
 
-## Font Setup (all three templates)
+## Font Setup (both literary templates)
 
-All three use the same fonts from esther.lol, baked in directly:
+Both use the same fonts from esther.lol, baked in directly:
 
 - **Body**: `p22-stickley-pro-text, neue-kabel, Palatino, Georgia, serif`
 - **Heading**: `neue-kabel, 'Gill Sans', 'Helvetica Neue', sans-serif`
 - **Typekit kits**: `ztn6rcs` (p22-stickley-pro-text) and `pgn7ley` (neue-kabel), loaded as hardcoded `<link>` tags in `base.njk` (not via metadata)
-- **Font size**: `clamp(1rem, .8rem + 1vw, 1.25rem)` on `html` — aligned across all three templates
+- **Font size**: `clamp(1rem, .8rem + 1vw, 1.25rem)` on `html` — aligned across both templates
 - CSS vars: `--font-body` and `--font-heading` in `:root`
 
 ## File Locations
 
-| File | pamphlet | chapbook | folio |
-|------|----------|----------|-------|
-| CSS | `css/style.css` | `css/index.css` | `css/index.css` |
-| Base layout | `_includes/layouts/base.njk` | `_includes/layouts/base.njk` | `_includes/layouts/base.njk` |
-| Chapter layout | `_includes/layouts/chapter.njk` | `_includes/layouts/chapter.njk` | `_includes/layouts/chapter.njk` |
-| Home layout | (uses base.njk) | `_includes/layouts/home.njk` | `_includes/layouts/home.njk` |
+| File | pamphlet | chapbook |
+|------|----------|----------|
+| CSS | `css/style.css` | `css/index.css` |
+| Base layout | `_includes/layouts/base.njk` | `_includes/layouts/base.njk` |
+| Chapter layout | `_includes/layouts/chapter.njk` | `_includes/layouts/chapter.njk` |
+| Home layout | (uses base.njk) | `_includes/layouts/home.njk` |
 
 ## Unique to Chapbook
 
 - Has dedicated `home.njk` layout with chapter list TOC
-- CSS uses `--font-body` and `--font-heading` (harmonized with folio and pamphlet)
+- CSS uses `--font-body` and `--font-heading` (harmonized with pamphlet)
 - Literary markdown features documented: drop caps, scene headings, character voice, section breaks
 
 ## npm Scripts
 
-All three use `npm start` to serve.
+Both literary templates use `npm start` to serve.
 
 ## Key Patterns
 
@@ -88,7 +87,6 @@ All three use `npm start` to serve.
 
 ## Git Notes
 
-- eleventy-folio remote frequently has commits ahead of local (user pushes independently) — always `git pull --rebase` before pushing if rejected
 - em dashes in `git commit -m` heredocs cause syntax errors; use plain hyphens
 
 ## Related Sites

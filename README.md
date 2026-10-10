@@ -5,9 +5,8 @@ An Eleventy v3 starter for chaptered literary sites. Designed for serialized fic
 Part of a family of interoperable templates:
 - **eleventy-pamphlet** - minimal, single layout
 - **eleventy-chapbook** (this) - separate layouts, feature-rich
-- **eleventy-folio** - polished, with extras
 
-The `content/` directory is portable across all three. Swap templates to change the presentation without touching your content.
+The `content/` directory is portable across the document templates (chapbook, pamphlet, prose-blog, tech-blog) under the [content contract](https://github.com/tepiton/content-fixture/blob/main/CONTENT-CONTRACT.md). Swap templates to change the presentation without touching your content.
 
 ## Quick start
 
@@ -146,7 +145,7 @@ css/
   index.css              # All literary styles
 ```
 
-The `content/` directory is designed to be portable. Copy it to eleventy-pamphlet or eleventy-folio to get a different presentation with the same content.
+The `content/` directory is designed to be portable. Copy it to any of the other document templates to get a different presentation with the same content.
 
 ## npm scripts
 

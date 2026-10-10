@@ -1,16 +1,16 @@
 ---
 phase: 4
 phase_name: Maintenance
-updated: 2026-10-04
-last_commit: 982c377
+updated: 2026-10-09
+last_commit: ad9ae71
 ---
 
 ## Current Focus
 
-dek ported from folio, transform dropped (Entry 2), and `content/img`
-passthrough added (Entry 3) — chapbook is the literary chaptered
-template and enforces the content contract with pamphlet and the
-blogs. Template is in maintenance mode.
+folio references purged from README.md and CLAUDE.md (Entry 4),
+completing the 2026-10-04 folio retirement. chapbook is one of four
+document templates (with pamphlet, prose-blog, tech-blog) under the
+content contract. Template is in maintenance mode.
 
 ## Active Tasks
 
@@ -24,7 +24,8 @@ None.
 ## Context
 
 - chapbook serves from orobia.dev, port 8082
-- `content/` is portable: copy to pamphlet unchanged
+- `content/` is portable: copy to any document template under the
+  content contract; folio retired 2026-10-04
 - Chapters support `dek` — subtitle under the heading and in the TOC;
   README documents the field
 - No image transform (DEC-010): `content/img/` copies to `_site/img/`

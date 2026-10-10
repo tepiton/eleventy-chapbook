@@ -62,6 +62,9 @@ See: chronicles/phase-3-parity.md
   (DEC-009), engines >=22, `.nvmrc` 24
 - Fresh install is silent; `npm audit` on demand reports only the
   upstream-unfixable braces→chokidar chain
+- Purged retired eleventy-folio references from README.md and
+  CLAUDE.md — living docs now describe the four document templates
+  under the content contract (Entry 4)
 
 See: chronicles/phase-4-maintenance.md
 
